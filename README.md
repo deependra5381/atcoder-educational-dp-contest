@@ -6,7 +6,7 @@ This repository contains my C++ solutions for the AtCoder Educational DP Contest
 
 | Task | Name | Solution | Status |
 | :---: | :--- | :---: | :---: |
-| **A** | [Frog 1](https://atcoder.jp) | - | 🔴 Unsolved |
+| **A** | [Frog 1](https://atcoder.jp/contests/dp/tasks/dp_a) | [C++](./A_Frog_1.cpp) | 🟢 Solved |
 | **B** | [Frog 2](https://atcoder.jp) | - | 🔴 Unsolved |
 | **C** | [Vacation](https://atcoder.jp) | - | 🔴 Unsolved |
 | **D** | [Knapsack 1](https://atcoder.jp) | - | 🔴 Unsolved |
