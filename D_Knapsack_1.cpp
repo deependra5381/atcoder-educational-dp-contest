@@ -36,7 +36,36 @@ int main(){
 // ========================================================
 // 2. TABULATION (Bottom-Up Approach)
 // ========================================================
-// यहाँ अपना Frog 2 का Tabulation वाला कोड पेस्ट करें
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<climits>
+typedef long long ll;
+using namespace std;
+int main(){
+  ll n , W;
+  cin >> n >> W;
+  vector<ll>wt(n);
+  vector<ll>val(n);
+  for(ll i = 0 ; i < n ; i++){
+    cin >> wt[i] >> val[i];
+  }
+  vector<vector<ll>>dp(n,vector<ll>(W + 1 , 0));
+  for(ll ind = wt[0] ; ind <= W ; ind++){
+    dp[0][ind] = val[0];
+  }
+  for(ll ind = 1 ; ind < n ; ind++){
+    for(ll w = 0 ; w <= W ; w++){
+      ll notake = dp[ind - 1][w];
+      ll take = LLONG_MIN;
+      if(wt[ind] <= w){
+        take = val[ind] + dp[ind - 1][w - wt[ind]];
+      }
+      dp[ind][w] = max(take , notake);
+    }
+  }
+  cout << dp[n-1][W];
+}
 
 
 // ========================================================
