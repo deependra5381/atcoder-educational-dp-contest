@@ -71,4 +71,34 @@ int main(){
 // ========================================================
 // 3. SPACE OPTIMIZATION
 // ========================================================
-// यहाँ अपना Frog 2 का Space Optimization वाला और main() कोड पेस्ट करें
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<climits>
+typedef long long ll;
+using namespace std;
+int main(){
+  ll n , W;
+  cin >> n >> W;
+  vector<ll>wt(n);
+  vector<ll>val(n);
+  for(ll i = 0 ; i < n ; i++){
+    cin >> wt[i] >> val[i];
+  }
+  vector<ll>curr(W + 1 , 0),prev(W + 1 , 0);
+  for(ll ind = wt[0] ; ind <= W ; ind++){
+    prev[ind] = val[0];
+  }
+  for(ll ind = 1 ; ind < n ; ind++){
+    for(ll w = 0 ; w <= W ; w++){
+      ll notake = prev[w];
+      ll take = LLONG_MIN;
+      if(wt[ind] <= w){
+        take = val[ind] + prev[w - wt[ind]];
+      }
+      curr[w] = max(take , notake);
+    }
+    prev = curr;
+  }
+  cout << prev[W];
+}
